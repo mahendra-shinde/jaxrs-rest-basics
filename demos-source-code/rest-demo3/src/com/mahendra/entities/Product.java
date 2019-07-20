@@ -1,5 +1,8 @@
 package com.mahendra.entities;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Product {
 	private String name;
 	private String description;
