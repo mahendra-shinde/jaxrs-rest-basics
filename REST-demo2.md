@@ -2,7 +2,7 @@
 
 1. Create new Dynamic Web Project
      Name:      RestService2
-     Runtime:   Tomcat
+     Runtime:   Tomcat 8
 
 2. Copy all Jersey JAR (from File Explorer) into
     WEB-INF/lib folder
@@ -38,3 +38,20 @@
 5.  Run Application on Server, try URL
         
     http://localhost:8080/RestService2/api/hello
+
+6.  Modify class "HelloService.java"
+
+    6.1 Add import statement for **javax.ws.rs.QueryParam**
+
+    6.2 Add method parameter for sayHello method:
+
+    ```java
+    @GET
+	public String sayHello(@QueryParam("name")  String name) {
+		return "Hello "+name+" welcome to earth-616";
+	}
+    ```
+
+7.  Test the application using following URL:
+
+    http://localhost:8080/RestService2/api/hello?name=mahendra
