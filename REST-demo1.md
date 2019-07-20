@@ -1,4 +1,4 @@
-REST using Jersey demo-1
+## REST using Jersey demo-1
 
 1. Visit Jersey download page
     https://jersey.github.io/download.html
