@@ -6,20 +6,31 @@ import javax.ws.rs.core.Response;
 import com.mahendra.models.Account;
 import com.mahendra.services.AccountService;
 
+import sun.security.provider.certpath.OCSPResponse.ResponseStatus;
+
 @Path("account")
 public class AccountResource {
 	private AccountService service = AccountService.getInstance();
 	
 	
 	@GET @Produces("application/json") 
-	public Account findById(@QueryParam("id") int accId) {
-		return service.find(accId);
+	public Response findById(@QueryParam("id") int accId) {
+		Account acc =  service.find(accId);
+		if(acc == null)
+			return Response.status(Response.Status.NOT_FOUND).build();
+		else {
+			return Response.ok(acc).build();
+		}
 	}
 	
 	@POST @Consumes("application/json")
 	public Response save(Account acc){
+		try {
 		service.save(acc);
-		return Response.ok("Created new account").build();
+			return Response.ok(service.find(acc.getAccNo())).build();
+		}catch(RuntimeException ex) {
+			return Response.notModified().entity("Already Exists!").build();
+		}
 	}
 	
 	@PUT @Consumes("application/json")

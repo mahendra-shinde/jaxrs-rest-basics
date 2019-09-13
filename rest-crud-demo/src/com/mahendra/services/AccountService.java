@@ -22,6 +22,10 @@ public class AccountService {
 	}
 
 	public void save(Account acc) {
+		
+		if(find(acc.getAccNo())!=null) {
+			throw new RuntimeException("Record already exists!");
+		}
 		System.out.println("Adding new account "+acc.getAccNo());
 		accounts.put(acc.getAccNo(),acc);
 	}
