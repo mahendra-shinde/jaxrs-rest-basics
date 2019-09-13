@@ -8,14 +8,21 @@ public class AccountService {
 
 	private Map<Integer, Account> accounts = new HashMap<>();
 	
+	//Singleton Object
+	private static AccountService service = new AccountService();
 	
-	public AccountService() {
+	public static AccountService getInstance() {
+		return service;
+	}
+	
+	private AccountService() {
 		super();
 		accounts.put(101,new Account(101, "Vallya", 120000));
 		accounts.put(102, new Account(102,"Bodi",230000));
 	}
 
 	public void save(Account acc) {
+		System.out.println("Adding new account "+acc.getAccNo());
 		accounts.put(acc.getAccNo(),acc);
 	}
 	
@@ -28,7 +35,7 @@ public class AccountService {
 		old.setCustomerName(acc.getCustomerName());
 	}
 
-	public Account find(int accNo) {
+	public Account find(int accNo) {		
 		return accounts.get(accNo);
 	}
 	
