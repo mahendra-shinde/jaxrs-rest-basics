@@ -23,6 +23,7 @@ public class Calculator {
 		return msg;
 	}*/
 	
+	//Generating Response with Headers (Custom headers)
 	@GET @Produces({"application/json","application/xml"})
 	public Response hello() {
 		Message msg = new Message();

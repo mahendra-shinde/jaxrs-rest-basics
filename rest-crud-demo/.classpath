@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/Libraries/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jersey-client-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jersey-core-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jersey-json-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jersey-server-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jersey-servlet-1.19.1.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="/Libraries/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
