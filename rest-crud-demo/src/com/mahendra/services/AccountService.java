@@ -2,6 +2,7 @@ package com.mahendra.services;
 
 import java.util.*;
 
+import com.mahendra.app.AppException;
 import com.mahendra.models.Account;
 
 public class AccountService {
@@ -24,7 +25,7 @@ public class AccountService {
 	public void save(Account acc) {
 		
 		if(find(acc.getAccNo())!=null) {
-			throw new RuntimeException("Record already exists!");
+			throw new AppException("Record already exists!");
 		}
 		System.out.println("Adding new account "+acc.getAccNo());
 		accounts.put(acc.getAccNo(),acc);
@@ -33,14 +34,17 @@ public class AccountService {
 	public void update(Account acc) {
 		Account old = find(acc.getAccNo());
 		if(old==null) {
-			throw new RuntimeException("Account "+acc.getAccNo()+" does not exists!");
+			throw new AppException("Account "+acc.getAccNo()+" does not exists!");
 		}
 		old.setBalance(acc.getBalance());
 		old.setCustomerName(acc.getCustomerName());
 	}
 
-	public Account find(int accNo) {		
-		return accounts.get(accNo);
+	public Account find(int accNo) {
+		Account acc = accounts.get(accNo);
+		if(acc==null)
+			throw new AppException("Account "+accNo+ "Does not exists!");
+		return acc;
 	}
 	
 	public List<Account> getAll(){
@@ -55,8 +59,7 @@ public class AccountService {
 		accounts.remove(accNo);
 		return true;
 		}
-		return false;
-		
+		throw new AppException("Account "+accNo+ "Does not exists!");		
 	}
 	
 }
