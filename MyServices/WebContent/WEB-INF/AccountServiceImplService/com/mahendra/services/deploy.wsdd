@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AccountServiceImplService WSDL service -->
+
+  <service name="AccountServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.mahendra.com"/>
+      <parameter name="wsdlServiceElement" value="AccountServiceImplService"/>
+      <parameter name="schemaQualified" value="http://services.mahendra.com,http://models.mahendra.com"/>
+      <parameter name="wsdlServicePort" value="AccountServiceImpl"/>
+      <parameter name="className" value="com.mahendra.services.AccountServiceImpl"/>
+      <parameter name="wsdlPortType" value="AccountServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://services.mahendra.com" name="save" qname="operNS:save" soapAction="">
+        <parameter xmlns:pns="http://services.mahendra.com" xmlns:tns="http://models.mahendra.com" qname="pns:ac" type="tns:Account"/>
+      </operation>
+      <operation xmlns:operNS="http://services.mahendra.com" xmlns:retNS="http://services.mahendra.com" xmlns:rtns="http://models.mahendra.com" name="getAccounts" qname="operNS:getAccounts" returnQName="retNS:getAccountsReturn" returnType="rtns:Account" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="save getAccounts"/>
+
+      <typeMapping xmlns:ns="http://models.mahendra.com" qname="ns:Account" type="java:com.mahendra.models.Account" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
