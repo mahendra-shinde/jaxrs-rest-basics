@@ -43,6 +43,21 @@
   <ns1:parameter name="wsdlTargetNamespace" value="http://services.mahendra.com"/>
   <ns1:parameter name="wsdlServiceElement" value="HelloServiceService"/>
  </ns1:service>
+ <ns1:service name="AccountServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="save" qname="ns2:save" soapAction="" xmlns:ns2="http://services.mahendra.com">
+   <ns1:parameter qname="ns2:ac" type="ns3:Account" xmlns:ns3="http://models.mahendra.com"/>
+  </ns1:operation>
+  <ns1:operation name="getAccounts" qname="ns4:getAccounts" returnQName="ns4:getAccountsReturn" returnType="ns5:Account" soapAction="" xmlns:ns4="http://services.mahendra.com" xmlns:ns5="http://models.mahendra.com"/>
+  <ns1:parameter name="allowedMethods" value="save getAccounts"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="AccountServiceImpl"/>
+  <ns1:parameter name="className" value="com.mahendra.services.AccountServiceImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="AccountServiceImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://services.mahendra.com,http://models.mahendra.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.mahendra.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="AccountServiceImplService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:Account" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.mahendra.models.Account" xmlns:ns6="http://models.mahendra.com"/>
+ </ns1:service>
  <ns1:transport name="http">
   <ns1:requestFlow>
    <ns1:handler type="URLMapper"/>
